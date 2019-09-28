@@ -2,9 +2,11 @@
 
 Shout out to [Crash Course](https://www.youtube.com/watch?v=3QhU9jd03a0&list=LLeVAzL66F8UlP34kGyAhg2w&index=5&t=0s) for this amazing playlist on how computer networks work.
 
-The first computer network appear in 1950's to facilitate the flow of information of people and hardware. There were used in companies and research facilities and also allowed to starting sharing resourses, like printers and storage drives. These first networks were called Local Area Network, or LAN.
+The first computer network appear in 1950's to facilitate the flow of information of people and hardware. There were used in companies and research facilities and also allowed to starting sharing resourses, like printers and storage drives. These first networks were called **Local Area Network (LAN)**.
 
-LANs can be as small as two machines in the same room or as large as an University Campus with thousands of computers connected together.
+LANs can be as small as two machines in the same room or as large as an University Campus with thousands of computers connected together. Actually LANs are normally the first connection from the computer to the Internet (it normally connects to a router). Routers are normally connected to a bigger network called **Wide Area Network (WAN)**, which is likely to be an even bigger router, run by internet service providers. That itself can be connected to even bigger WANs, and so on and so forth, until it reaches the final destination server.
+
+To request a particular file from let's say Youtube, data has to work its way up to hte **backbone**, travel along that for a bit, and then work its way back down to a Youtube server that had the file.
 
 ## Ethernet
 
@@ -58,13 +60,31 @@ Data Link Layer is divided into two sublayers:
 
 This is the most important layer of the OSI model, which performs real time processing and transfer data from nodes to nodes. Internet Protocol stands on this layer.
 
+**Internet Protocol (IP)**: IP is in charge of delivering packets from the source to the destination solely based on the IP addresses in the packet headers. This protocol transmit datagrams which have two components: a header (includes IP addresses from source and destination, and other metadata) and a payload (data transported). However, IP is a low level protocol: IP addresses help to get the data to the computer, but there is no information on which program shall use that data. Because of that, more advanced protocols have been developed to sit on top of the IP.
+
+![IP](https://raw.githubusercontent.com/darroyolpz/How-Internet-Works/master/Images/IP.png)
+
+It's not rocket science to realize one needs an **IP address** (both in the sender and the receiver) to be able to surf on the Internet. An IP address (IP address) is a numerical label assigned to each device connected to a computer network that uses the Internet Protocol.
+
 ### 4. Transport Layer <a name="transport"></a>
 
-This layer transmit data from source to destination node and uses many protocols like TCP/IP, UDP, SPX, DCCP and SCTP.
+This layer is responsible for point-to-pont data transfer, and error detection and recovery when it's is possible.
+
+**User Datagram Protocol (UDP)**: Designed in 1980, this low-latency protocol uses a simple connectionless communication with a minimum mechanism. It provides checksums for data integrity checking, and port numbers for addressing different functions at the source and destination of the datagram. On the other hand, there is no guarantee of delivery, ordering or duplicate protection. UDP is suitable for purposes where error checking and correction are not mandatory, such as time-sensitive applications (gaming, voice & video communication, etc.).
+
+![UDP Protocol](https://raw.githubusercontent.com/darroyolpz/How-Internet-Works/master/Images/UDP%20Protocol.png)
+
+**Transmission Control Protocol (TCP)**: It's the most widely used protocol on the Internet. TCP is a reliable stream delivery service which guarantees that all bytes received will be identical and in the same order as those sent. Like the UDP, TCP has to check the port and the checksum of the data, but also contains other features more focused on **reliability of delivery**. TCP is able to order different packets in the final destination, even if they have been delivered at different times. It has a mechanism to acknowledge the packets received, sending back an ack message to the sender once it gets to the receiver (this doubles the messages sent by the system). If a packet is missing and no message is sent, the packet is sent again to ensure the transmission. It also is able to send many packets at the same time, and has a congestion-control mechanism to not coggle the network according to available bandwidth.
+
+![TCP/IP Protocol](https://raw.githubusercontent.com/darroyolpz/How-Internet-Works/master/Images/TCP%20Protocol.png)
 
 ### 5. Session Layer <a name="session"></a>
 
-This layer creates a session between the source and the destination nodes and terminates sessions on completion of the communication process.
+This layer creates a session between the source and the destination nodes and terminates sessions on completion of the communication process. UPD and TCP protocols opens a connection or **session** using the once the information is received by the DNS.
+
+**Domain Name Service (DNS)**: It's like the phonebook of the Internet. It contains both the name and the IP address of all the existing domains.
+
+![DNS](https://raw.githubusercontent.com/darroyolpz/How-Internet-Works/master/Images/DNS.png)
 
 ### 6. Presentation Layer <a name="presentation"></a>
 
@@ -72,4 +92,8 @@ It converts data formats into a format readable by the application layer.
 
 ### 7. Application Layer <a name="application"></a>
 
-This laer works at the user end to interact with user applications. File transfer and email are the major popular services of this layer. It uses several protocols, like HTTP, SMTP, FTA and SMPP.
+This layer works at the user end to interact with user applications. File transfer and email are the major popular services of this layer. It uses several protocols, like HTTP, SMTP, FTA and SMPP.
+
+**Hypertext Transfer Protocol (HTTP)**: It's an application protocol, fundation of the data communication for the **Word Wide Web**. When you request a site, the first thing the computer does is a DNS look-up. It takes the domain name as input, and replies back with the matching IP address. Then, once the webpage IP address is known, the computer opens a TCP connection for the web server and ask for the hypertext web-page. Web server replies back with the page and send it back. Web page is interpreted by the computer web-browser and is rendered on the screen. In latest version, HTTP has added some response codes, like 404 - page not found code.
+
+![HTTP](https://raw.githubusercontent.com/darroyolpz/How-Internet-Works/master/Images/HTTP.png)
