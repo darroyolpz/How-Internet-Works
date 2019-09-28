@@ -14,13 +14,13 @@ Ehternet defines the two first layers of the [Open Systems Interconnection model
 
 Layer architecture of the OSI model:
 
-1. Physical Layer
-2. Data Link Layer
-3. Network Layer
-4. Transport Layer
-5. Session Layer
-6. Presentation Layer
-7. Application Layer
+1. [Physical Layer](#physical)
+2. [Data Link Layer](#data)
+3. [Network Layer](#network)
+4. [Transport Layer](#transport)
+5. [Session Layer](#session)
+6. [Presentation Layer](#presentation)
+7. [Application Layer](#application)
 
 One of the most critical problems of the networks is the possibility having **data collision**. As network traffic increases, it's more likely that two computers transmit data at the same time. This can cause data to be lost in the middle of the transmission.
 
@@ -28,7 +28,7 @@ Fortunately, this can be solved adding different special devices to control the 
 
 Sometimes data is too big to be transmited at once using one route, so in order to not clog the network, data is chopped in many small pieces called **packets**. Each packet contains a destination address on the network, so routers know where to forward them.
 
-### 1. Physical Layer
+### 1. Physical Layer <a name="physical"></a>
 
 The first layer of the OSI consists of **cabling** and **devices**.
 
@@ -44,7 +44,7 @@ On the other hand, **routers** are in charge of finding the path to connect the 
 
 Switches and routers act as the directors of the network and enable communications between all the different devices.
 
-### 2. Data Link Layer
+### 2. Data Link Layer <a name="data"></a>
 
 Data Link Layer is divided into two sublayers:
 
@@ -54,22 +54,22 @@ Data Link Layer is divided into two sublayers:
 
 **Logical Link Control (LLC)** establishes paths for data on the Ethernet to transmit between devices. It's also responsible of multiplexing protocols transmitted over the MAC layer (when transmitting) and demultiplexing them (when receiving), and also provides node-to-node flow control and error management.
 
-### 3. Network Layer
+### 3. Network Layer <a name="network"></a>
 
 This is the most important layer of the OSI model, which performs real time processing and transfer data from nodes to nodes. Internet Protocol stands on this layer.
 
-### 4. Transport Layer
+### 4. Transport Layer <a name="transport"></a>
 
 This layer transmit data from source to destination node and uses many protocols like TCP/IP, UDP, SPX, DCCP and SCTP.
 
-### 5. Session Layer
+### 5. Session Layer <a name="session"></a>
 
 This layer creates a session between the source and the destination nodes and terminates sessions on completion of the communication process.
 
-### 6. Presentation Layer
+### 6. Presentation Layer <a name="presentation"></a>
 
 It converts data formats into a format readable by the application layer.
 
-### 7. Application Layer
+### 7. Application Layer <a name="application"></a>
 
 This laer works at the user end to interact with user applications. File transfer and email are the major popular services of this layer. It uses several protocols, like HTTP, SMTP, FTA and SMPP.
